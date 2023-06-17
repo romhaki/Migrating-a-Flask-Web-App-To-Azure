@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: theazfront-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: theazfront
+  template:
+    metadata:
+      labels:
+        app: theazfront
+    spec:
+      containers:
+      - name: theazfront
+        image: ciscfrontcontainer.azurecr.io/theazfront:latest
+        ports:
+        - containerPort: 5000
