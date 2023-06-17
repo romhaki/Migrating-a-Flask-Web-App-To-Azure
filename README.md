@@ -438,22 +438,22 @@ We will need two YAML files, a Deployment YAML and a Service YAML. These YAML fi
   The deployment YAML's code is as follows:
 
 ```
-  apiVersion: apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todolist-app
+  name: theazfront-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todolist-app
+      app: theazfront
   template:
     metadata:
       labels:
-        app: todolist-app
+        app: theazfront
     spec:
       containers:
-      - name: todolist-app
+      - name: theazfront
         image: ciscfrontcontainer.azurecr.io/theazfront:latest
         ports:
         - containerPort: 5000
@@ -465,11 +465,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: todolist-service
+  name: theazfront-service
 spec:
   type: LoadBalancer
   selector:
-    app: todolist-app
+    app: theazfront
   ports:
     - protocol: TCP
       port: 80
